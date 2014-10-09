@@ -21,13 +21,19 @@ public class BresenhamLineScan extends JPanel {
 
 	canvas = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         fillCanvas(Color.BLACK);
-	//drawLine(0, 10, 10, 10, 100);
-	//	//horizontal
-	//drawLine(0, 10, 10, 100, 10);
+	DataLine line1 = new DataLine(10,10,10,100);
+	DataLine line2 = new DataLine(10,10,100,10);
+	DataLine line3 = new DataLine(10,10,100,100);
+	DataLine line4 = new DataLine(100,100,150,50);
+	
+
+	drawLine(line1);
+	//horizontal
+	drawLine(line2);
 	//diagonal pos
-	drawLine(0, 10, 10, 100, 100);
+	drawLine(line3);
 	//diagonal neg
-	drawLine(0, 100, 100, 150, 50);
+	drawLine(line4);
     }
 
     public Dimension getPreferredSize() {
@@ -53,8 +59,15 @@ public class BresenhamLineScan extends JPanel {
     }
 
 
-    public void drawLine(int dash_length, int x, int y, int x2, int y2) {
+    public void drawLine(DataLine dataline) {
 	int rgb = 16777215;
+
+	int x = dataline.getx1();
+	int y = dataline.gety1();
+	int x2 = dataline.getx2();
+	int y2 = dataline.gety2();
+
+	
 	int w = x2 - x;
 	int h = y2 - y;
 	int dx1 = 0, dy1 = 0, dx2 = 0, dy2 = 0;
