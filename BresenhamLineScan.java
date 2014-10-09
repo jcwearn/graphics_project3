@@ -25,7 +25,7 @@ public class BresenhamLineScan extends JPanel {
 	DataLine line2 = new DataLine(10,10,100,10);
 	DataLine line3 = new DataLine(10,10,100,100);
 	DataLine line4 = new DataLine(100,100,150,50);
-	//DataLine line5 = line4.basicTranslate(50,50,line4);
+	DataLine line5 = line4.basicTranslate(50,50);
 	
 
 	//drawLine(line1);
