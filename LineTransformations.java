@@ -1,7 +1,7 @@
 public class LineTransformations {
 
     public void basicTranslate(int Tx, int Ty) {
-
+	
     }//basicTranslate
 
     public void basicScale(int Sx, int Sy) {
