@@ -1,5 +1,5 @@
 compile:
-	javac Driver.java BresenhamLineScan.java DataLine.java
+	javac Driver.java BresenhamLineScan.java DataLine.java Matrix.java
 
 Driver:
 	javac Driver.java
