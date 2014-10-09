@@ -52,7 +52,7 @@ public class DataLine {
 	return line;
     }//basicTranslate
     
-
+    //returns a DataLine that has been scaled by Tx and Ty
     public DataLine basicScale(double Sx, double Sy) {
 	double x1 = Math.round(getx1() * Sx);
 	double y1 = Math.round(gety1() * Sy);
@@ -62,6 +62,8 @@ public class DataLine {
 	return line;
     }//basicScale
 
+
+    //returns a Dataline that has been rotated by angle
     public void basicRotate(int angle) {
 
     }//basicRotate
