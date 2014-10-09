@@ -1,7 +1,10 @@
 public class LineTransformations {
 
-    public void basicTranslate(int Tx, int Ty) {
-	
+    public static void basicTranslate(int Tx, int Ty, DataLine line) {
+	int x1 = line.getx1() + Tx;
+	int y1 = line.gety1() + Ty;
+	int x2 = line.getx2() + Tx;
+	int y2 = line.gety2() + Ty;
     }//basicTranslate
 
     public void basicScale(int Sx, int Sy) {
@@ -36,4 +39,4 @@ public class LineTransformations {
 
     }//outputLines
 
-}
+}//LineTransformations

@@ -25,15 +25,17 @@ public class BresenhamLineScan extends JPanel {
 	DataLine line2 = new DataLine(10,10,100,10);
 	DataLine line3 = new DataLine(10,10,100,100);
 	DataLine line4 = new DataLine(100,100,150,50);
+	//DataLine line5 = line4.basicTranslate(50,50,line4);
 	
 
-	drawLine(line1);
+	//drawLine(line1);
 	//horizontal
-	drawLine(line2);
+	//drawLine(line2);
 	//diagonal pos
-	drawLine(line3);
+	//drawLine(line3);
 	//diagonal neg
 	drawLine(line4);
+	drawLine(line5);
     }
 
     public Dimension getPreferredSize() {
