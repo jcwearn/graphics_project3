@@ -8,6 +8,7 @@ public class DataLine {
 	this.y2 = y2;
     }//DataLine
 
+    //getters and setters
     public int getx1() {
 	return x1;
     }//getx1
@@ -40,6 +41,8 @@ public class DataLine {
 	y2 = y;
     }//sety1
 
+
+    //returns a DataLine that has been translated by Tx and Ty
     public DataLine basicTranslate(int Tx, int Ty) {
 	int x1 = getx1() + Tx;
 	int y1 = gety1() + Ty;
@@ -48,6 +51,7 @@ public class DataLine {
 	DataLine line = new DataLine(x1,y1,x2,y2);
 	return line;
     }//basicTranslate
+    
 
     public void basicScale(int Sx, int Sy) {
 
