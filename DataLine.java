@@ -66,6 +66,19 @@ public class DataLine {
     //returns a Dataline that has been rotated by angle
     public DataLine basicRotate(double angle) {
 	angle = Math.toRadians(angle);
+	double cosAngle = Math.cos(angle);
+	double sinAngle = Math.sin(angle);
+	
+	double[][] rotate = { {cosAngle,-sinAngle,1.00}, {sinAngle,cosAngle,0.00}, {0.00,0.00,1.00} };
+	double[][] point1 = {{(double)getx1(),(double)gety1(),1.00}};
+	double[][] point2 = {{(double)getx2(),(double)gety2(),1.00}};
+
+	double[][] result1 = Matrix.multiplicar(point1,rotate);
+	double[][] result2 = Matrix.multiplicar(point2,rotate);
+
+	DataLine line = new DataLine((int)result1[0][0], (int)result1[0][1], (int)result2[0][0], (int)result2[0][1]);
+	/*
+
 	double x1 = Math.round(getx1() * Math.cos(angle) + gety1() * Math.sin(angle));
 	double y1 = Math.round(getx1() * Math.cos(angle) + gety1() * Math.cos(angle));
 	double x2 = Math.round(getx2() * Math.cos(angle) + gety2() * Math.sin(angle));
@@ -74,7 +87,9 @@ public class DataLine {
 	System.out.println("x1:" + getx1() + " y1:" + gety1() + " x2:" + getx2() + " y2:" + gety2());
 	DataLine line = new DataLine((int)x1,(int)y1,(int)x2,(int)y2);
 	System.out.println(angle);
-	return line;
+
+	*/
+	return line;	
     }//basicRotate
 
     public void concatenate(int[][] matrix1, int[][] matrix2) {
