@@ -1,11 +1,11 @@
 compile:
-	javac Driver.java BresenhamLineScan.java LineTransformations.java DataLine.java
+	javac Driver.java BresenhamLineScan.java DataLine.java
 
 Driver:
 	javac Driver.java
 
-LineTransformations:
-	javac LineTransformations.java
+DataLine:
+	javac DataLines.java
 
 clean:
 	rm *.class
