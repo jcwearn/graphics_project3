@@ -70,7 +70,10 @@ public class DataLine {
 	double y1 = Math.round(getx1() * Math.cos(angle) + gety1() * Math.cos(angle));
 	double x2 = Math.round(getx2() * Math.cos(angle) + gety2() * Math.sin(angle));
 	double y2 = Math.round(getx2() * Math.cos(angle) + gety2() * Math.cos(angle));
+	System.out.println("(" + x1 + "," + y1 + ") (" + x2 + "," + y2 + ")");
+	System.out.println("x1:" + getx1() + " y1:" + gety1() + " x2:" + getx2() + " y2:" + gety2());
 	DataLine line = new DataLine((int)x1,(int)y1,(int)x2,(int)y2);
+	System.out.println(angle);
 	return line;
     }//basicRotate
 
