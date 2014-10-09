@@ -53,8 +53,13 @@ public class DataLine {
     }//basicTranslate
     
 
-    public void basicScale(int Sx, int Sy) {
-
+    public DataLine basicScale(double Sx, double Sy) {
+	double x1 = Math.round(getx1() * Sx);
+	double y1 = Math.round(gety1() * Sy);
+	double x2 = Math.round(getx2() * Sx);
+	double y2 = Math.round(gety2() * Sy);
+	DataLine line = new DataLine((int)x1,(int)y1,(int)x2,(int)y2);
+	return line;
     }//basicScale
 
     public void basicRotate(int angle) {
