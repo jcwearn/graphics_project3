@@ -64,8 +64,14 @@ public class DataLine {
 
 
     //returns a Dataline that has been rotated by angle
-    public void basicRotate(int angle) {
-
+    public DataLine basicRotate(double angle) {
+	angle = Math.toRadians(angle);
+	double x1 = Math.round(getx1() * Math.cos(angle) + gety1() * Math.sin(angle));
+	double y1 = Math.round(getx1() * Math.cos(angle) + gety1() * Math.cos(angle));
+	double x2 = Math.round(getx2() * Math.cos(angle) + gety2() * Math.sin(angle));
+	double y2 = Math.round(getx2() * Math.cos(angle) + gety2() * Math.cos(angle));
+	DataLine line = new DataLine((int)x1,(int)y1,(int)x2,(int)y2);
+	return line;
     }//basicRotate
 
     public void concatenate(int[][] matrix1, int[][] matrix2) {
