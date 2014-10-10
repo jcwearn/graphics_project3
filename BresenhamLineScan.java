@@ -27,7 +27,7 @@ public class BresenhamLineScan extends JPanel {
 	DataLine line4 = new DataLine(100,100,150,50);
 	DataLine line5 = line4.basicTranslate(50,50);
 	DataLine line6 = line5.basicScale(2,1.5);
-	DataLine line7 = line4.basicRotate(45);
+	DataLine line7 = line6.basicRotate(30);
 	//drawLine(line1);
 	//horizontal
 	//drawLine(line2);
@@ -88,15 +88,17 @@ public class BresenhamLineScan extends JPanel {
 	}
 	int numerator = longest >> 1;
 	for (int i=0;i<=longest;i++) {
-	    canvas.setRGB((int)x, (int)y, rgb);
-	    numerator += shortest;
-	    if (!(numerator<longest)) {
-		numerator -= longest;
-		x += dx1;
-		y += dy1;
-	    } else {
-		x += dx2;
-		y += dy2;
+	    if(x >= 0 && y >=0 && x <= 639 && y <= 479) {
+		canvas.setRGB((int)x, (int)y, rgb);
+		numerator += shortest;
+		if (!(numerator<longest)) {
+		    numerator -= longest;
+		    x += dx1;
+		    y += dy1;
+		} else {
+		    x += dx2;
+		    y += dy2;
+		}
 	    }
 	}
 	
