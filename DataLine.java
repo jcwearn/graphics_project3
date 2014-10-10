@@ -75,14 +75,15 @@ public class DataLine {
 
 	double[][] result1 = Matrix.multiplicar(point1,rotate);
 	double[][] result2 = Matrix.multiplicar(point2,rotate);
-	System.out.println((int)result1[0][0] + "," + (int)result1[0][1] + " " + (int)result2[0][0] + "," + (int)result2[0][1]);
 	DataLine line = new DataLine((int)result1[0][0], (int)result1[0][1], (int)result2[0][0], (int)result2[0][1]);
       
 	return line;	
     }//basicRotate
 
-    public void concatenate(int[][] matrix1, int[][] matrix2) {
-	
+    //returns a 2d array containing the concatenated matrices
+    public double[][] concatenate(double[][] matrix1, double[][] matrix2) {
+	double[][] result = Matrix.multiplicar(matrix1,matrix2);
+	return result;
     }//concatenate
 
     public void applyTransformation(int[][] matrix, DataLine[] datalines, int num) {
