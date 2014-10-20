@@ -217,6 +217,7 @@ public class Driver {
 	     case 7:
 		 break;
 	     case 8:
+		 panel.inputLines();
 		 break;
 	     case 9:
 		 panel.outputLines(panel.getDatalines(), panel.getNumOfDatalines());

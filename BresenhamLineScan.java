@@ -4,7 +4,7 @@
   Sources: skeleton code taken from stack overflow @ http://stackoverflow.com/questions/3325546/how-to-color-a-pixel.  Bresenham Algortithm Implementation based on code from http://tech-algorithm.com/articles/drawing-line-using-bresenham-algorithm/
  */
 import java.io.*;
-import java.util.Scanner;
+import java.util.*;
 import java.util.ArrayList;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -105,8 +105,29 @@ public class BresenhamLineScan extends JPanel {
 
     }//displayPixels
 
-    public void inputLines(DataLine[] datalines, int num) {
-
+    public void inputLines() {
+	int x1,y1,x2,y2;
+	DataLine line;
+	try {
+	    BufferedReader br = new BufferedReader(new FileReader("input.txt"));
+	    StringTokenizer st;
+	    String txtNum;
+	    try {
+		while((txtNum = br.readLine()) != null) {
+		    st = new StringTokenizer(txtNum);
+		    x1 = Integer.parseInt(st.nextToken());
+		    y1 = Integer.parseInt(st.nextToken());
+		    x2 = Integer.parseInt(st.nextToken());
+		    y2 = Integer.parseInt(st.nextToken());
+		    line = new DataLine(x1,y1,x2,y2);
+		    drawLine(line);
+		}
+	    } catch (IOException ex) {
+		System.out.println("Error");
+	    }
+	} catch (FileNotFoundException ex) {
+	    System.out.println("Error");
+	}
     }//inputLines
 
     public static void outputLines(ArrayList<DataLine> datalines, int num) {
