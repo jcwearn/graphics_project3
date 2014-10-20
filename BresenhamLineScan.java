@@ -35,6 +35,7 @@ public class BresenhamLineScan extends JPanel {
 	int x2 = dataline.getx2() + Tx;
 	int y2 = dataline.gety2() + Ty;
 	DataLine line = new DataLine(x1,y1,x2,y2);
+	drawLine(line);
 	return line;
     }//basicTranslate
 
@@ -45,6 +46,7 @@ public class BresenhamLineScan extends JPanel {
 	double x2 = Math.round(line.getx2() * Sx);
 	double y2 = Math.round(line.gety2() * Sy);
 	DataLine result = new DataLine((int)x1,(int)y1,(int)x2,(int)y2);
+	drawLine(result);
 	return result;
     }//basicScale
 
@@ -62,7 +64,7 @@ public class BresenhamLineScan extends JPanel {
 	double[][] result1 = Matrix.multiplicar(point1,rotate);
 	double[][] result2 = Matrix.multiplicar(point2,rotate);
 	DataLine line = new DataLine((int)result1[0][0], (int)result1[0][1], (int)result2[0][0], (int)result2[0][1]);
-      
+	drawLine(line);
 	return line;	
     }//basicRotate
     

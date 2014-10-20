@@ -19,24 +19,6 @@ public class Driver {
 	 Scanner scan = new Scanner(System.in);
 	 BresenhamLineScan panel = new BresenhamLineScan(width, height);
 
-	 DataLine line1 = new DataLine(10,10,10,100);
-	 DataLine line2 = new DataLine(10,10,100,10);
-	 DataLine line3 = new DataLine(10,10,100,100);
-	 DataLine line4 = new DataLine(100,100,150,50);
-	 DataLine line5 = panel.basicTranslate(50,50, line1);
-	 DataLine line6 = panel.basicScale(2,1.5,line5);
-	 DataLine line7 = panel.basicRotate(30, line6);
-	 //drawLine(line1);
-	 //horizontal
-	 //drawLine(line2);
-	 //diagonal pos
-	 //drawLine(line3);
-	 //diagonal neg
-	 panel.drawLine(line4);
-	 panel.drawLine(line5);
-	 panel.drawLine(line6);
-	 panel.drawLine(line7);
-
 	 frame.add(panel);
 	 frame.pack();
 	 frame.setVisible(true);
@@ -45,6 +27,7 @@ public class Driver {
 
 	 while(isRunning) {
 	     System.out.println("What would you like to do?");
+	     System.out.println("0: Draw Line");
 	     System.out.println("1: Basic Translation");
 	     System.out.println("2: Basic Scale");
 	     System.out.println("3: Basic Rotate");
@@ -58,6 +41,19 @@ public class Driver {
 	     
 	     input = scan.nextInt();
 	     switch(input) {
+	     case 0:
+		 System.out.println("Enter the x1 for the line");
+		 x1 = scan.nextInt();
+		 System.out.println("Enter the y1 for the line");
+		 y1 = scan.nextInt();
+		 System.out.println("Enter the x2 for the line");
+		 x2 = scan.nextInt();
+		 System.out.println("Enter the y2 for the line");
+		 y2 = scan.nextInt();
+
+		 line = new DataLine(x1,y1,x2,y2);
+		 panel.drawLine(line);
+		 break;
 	     case 1:
 		 System.out.println("Enter the x1 for the line");
 		 x1 = scan.nextInt();
