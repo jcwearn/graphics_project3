@@ -39,6 +39,8 @@ public class BresenhamLineScan extends JPanel {
 	drawLine(line5);
 	drawLine(line6);
 	drawLine(line7);
+
+	DataLine.outputLines(datalines, 4);
     }
 
     public void setDimension(int width, int height) {
