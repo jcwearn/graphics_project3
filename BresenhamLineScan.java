@@ -110,8 +110,12 @@ public class BresenhamLineScan extends JPanel {
     public void inputLines() {
 	int x1,y1,x2,y2;
 	DataLine line;
+	String input;
+	Scanner scan = new Scanner(System.in);
+	System.out.println("Enter the name of file with proper file extension (e.g. input.txt):");
+	input = scan.nextLine();
 	try {
-	    BufferedReader br = new BufferedReader(new FileReader("input.txt"));
+	    BufferedReader br = new BufferedReader(new FileReader(input));
 	    StringTokenizer st;
 	    String txtNum;
 	    try {
