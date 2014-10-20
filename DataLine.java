@@ -1,3 +1,9 @@
+import java.io.*;
+//import java.io.Writer;
+//import java.io.BufferedWriter;
+import java.util.Scanner;
+import java.util.ArrayList;
+
 public class DataLine {
     private int x1,x2,y1,y2;
     
@@ -118,8 +124,23 @@ public class DataLine {
 
     }//inputLines
 
-    public void outputLines(DataLine[] datalines, int num) {
+    public static void outputLines(ArrayList<DataLine> datalines, int num) {
+	String input;
+	Scanner scanner = new Scanner(System.in);
+	System.out.println("Enter a name for the txt file: ");
+	input = scanner.nextLine();
+	
+	Writer writer = null;
 
+	try {
+	    writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(input + ".txt"), "utf-8"));
+	    writer.write("Something");
+	} catch (IOException ex) {
+	    System.out.println("Error");
+	} finally {
+	    try {writer.close();} catch (Exception ex) {}
+	}
+			
     }//outputLines
     
 }//DataLine
