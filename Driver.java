@@ -5,8 +5,12 @@ import java.util.Scanner;
 public class Driver {
      public static void main(String[] args) {
 	 Boolean isRunning = true;
+	 Boolean is3x3 = false;
          int width = 640;
          int height = 480;
+	 int input;
+	 double matrixInput;
+	 double[][] matrix1,matrix2;
 	 JFrame frame = new JFrame("Project 3");
 	 Scanner scan = new Scanner(System.in);
 	 BresenhamLineScan panel = new BresenhamLineScan(width, height);
@@ -48,7 +52,7 @@ public class Driver {
 	     System.out.println("9: Output Lines");
 	     System.out.println("10: Exit");
 	     
-	     int input = scan.nextInt();
+	     input = scan.nextInt();
 	     switch(input) {
 	     case 1:
 		 break;
@@ -57,6 +61,81 @@ public class Driver {
 	     case 3:
 		 break;
 	     case 4:
+		 
+		 System.out.println("What size is matrix1?");
+		 System.out.println("1: 3x3");
+		 System.out.println("2: 1X3");
+		 input = scan.nextInt();
+		 switch(input) {
+		 case 1:
+		     is3x3 = true;
+		     matrix1 = new double[3][3];
+		     break;
+		 case 2:
+		     matrix1 = new double[1][3];
+		     break;
+		 default:
+		     matrix1 = new double[0][0];
+		     System.out.println("Invalid Input");
+		 }
+
+		 if(is3x3) {
+		     for(int i = 0; i < 3; i++) {
+			 for(int j = 0; j < 3; j++) {
+			     System.out.println("Enter number " + (i*j+1));
+			     matrixInput = scan.nextDouble();
+			     matrix1[i][j] = matrixInput;
+			 }
+		     }
+		 }//if
+
+		 else {
+		     for(int i = 0; i < 3; i++) {
+			 System.out.println("Enter number " + (i+1));
+			 matrixInput = scan.nextDouble();
+			 matrix1[0][i] = matrixInput;
+     		     }
+		 }
+
+		 System.out.println("What size is matrix2?");
+		 System.out.println("1: 3x3");
+		 System.out.println("2: 1X3");
+		 input = scan.nextInt();
+		 switch(input) {
+		 case 1:
+		     is3x3 = true;
+		     matrix2 = new double[3][3];
+		     break;
+		 case 2:
+		     is3x3 = false;
+		     matrix2 = new double[1][3];
+		     break;
+		 default:
+		     matrix2 = new double[0][0];
+		     System.out.println("Invalid Input");
+		 }
+
+		 if(is3x3) {
+		     for(int i = 0; i < 3; i++) {
+			 for(int j = 0; j < 3; j++) {
+			     System.out.println("Enter number " + (i*j+1));
+			     matrixInput = scan.nextDouble();
+			     matrix2[i][j] = matrixInput;
+			 }
+		     }
+		 }//if
+
+		 else {
+		     for(int i = 0; i < 3; i++) {
+			 System.out.println("Enter number " + (i+1));
+			 matrixInput = scan.nextDouble();
+			 matrix2[0][i] = matrixInput;
+     		     }
+		 }
+		
+
+		 panel.concatenate(matrix1,matrix2);
+		 System.out.println("Result stored! It can now be used with other transformations.\n\n");
 		 break;
 	     case 5:
 		 break;
