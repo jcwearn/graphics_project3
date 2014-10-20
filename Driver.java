@@ -11,9 +11,8 @@ public class Driver {
          int width = 640;
          int height = 480;
 	 int input;
-	 String inputString;
-	 int x1,y1,x2,y2, Tx, Ty, Sx, Sy, angle;
-	 double matrixInput;
+	 int x1,y1,x2,y2, Tx, Ty, angle;
+	 double matrixInput, Sx, Sy;
 	 double[][] matrix1,matrix2;
 	 JFrame frame = new JFrame("Project 3");
 	 Scanner scan = new Scanner(System.in);
@@ -86,9 +85,9 @@ public class Driver {
 		 line = new DataLine(x1,y1,x2,y2);
 
 		 System.out.println("Enter the value for Sx.");
-		 Sx = scan.nextInt();
+		 Sx = scan.nextDouble();
 		 System.out.println("Enter the value for Sy.");
-		 Sy = scan.nextInt();
+		 Sy = scan.nextDouble();
 		 
 		 panel.basicScale(Sx,Sy,line);
 		 break;
@@ -186,19 +185,20 @@ public class Driver {
 		 panel.concatenate(matrix1,matrix2);
 		 System.out.println("Result stored! It can now be used with other transformations.\n\n");
 		 break;
+		 
 	     case 5:
 		 ArrayList<DataLine> datalines = panel.getDatalines();
 		 double[][] matrix = new double[3][3];
 		 int num = panel.getNumOfDatalines();
 		 
-		 System.out.println("Would you like to use the stored matrix? (y/n)");
-		 inputString = scan.nextLine();
+		 System.out.println("Select option.\n1: Use stored matrix.\n2: Enter new 3x3 matrix.");
+		 input = scan.nextInt();
 
-		 if(inputString.equalsIgnoreCase("y")) {
+		 if(input == 1) {
 		     matrix = panel.getConcatenateMatrix();
 		     panel.applyTransformation(matrix, datalines, num);
 		 }
-		 else if(inputString.equalsIgnoreCase("n")) {
+		 else if(input == 2) {
 		     for(int i = 0; i < 3; i++) {
 			 for(int j = 0; j < 3; j++) {
 			     System.out.println("Enter number " + (i*j+1));
@@ -207,6 +207,9 @@ public class Driver {
 			 }
 		     }
 		     panel.applyTransformation(matrix, datalines, num);
+		 }
+		 else {
+		     System.out.println("Invalid input");
 		 }
 		 break;
 	     case 6:
