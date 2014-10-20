@@ -3,7 +3,7 @@
   Description: Implementation of Bresenham Line Scan Algorithm in Java
   Sources: skeleton code taken from stack overflow @ http://stackoverflow.com/questions/3325546/how-to-color-a-pixel.  Bresenham Algortithm Implementation based on code from http://tech-algorithm.com/articles/drawing-line-using-bresenham-algorithm/
  */
-
+import java.util.ArrayList;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 public class BresenhamLineScan extends JPanel {
 
     private BufferedImage canvas;
+    private ArrayList<DataLine> datalines = new ArrayList<DataLine>();
 
     public BresenhamLineScan(int width, int height) {
 	int x1,x2,y1,y2;
@@ -38,6 +39,10 @@ public class BresenhamLineScan extends JPanel {
 	drawLine(line5);
 	drawLine(line6);
 	drawLine(line7);
+    }
+
+    public void setDimension(int width, int height) {
+	
     }
 
     public Dimension getPreferredSize() {
@@ -103,5 +108,7 @@ public class BresenhamLineScan extends JPanel {
 	}
 	
         repaint();
+	datalines.add(dataline);
+	
     }
 }
