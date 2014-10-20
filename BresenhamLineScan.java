@@ -27,6 +27,44 @@ public class BresenhamLineScan extends JPanel {
 	numOfDatalines = 0;
     }
 
+    //returns a DataLine that has been translated by Tx and Ty
+    public DataLine basicTranslate(int Tx, int Ty, DataLine dataline) {
+	int x1 = dataline.getx1() + Tx;
+	int y1 = dataline.gety1() + Ty;
+	int x2 = dataline.getx2() + Tx;
+	int y2 = dataline.gety2() + Ty;
+	DataLine line = new DataLine(x1,y1,x2,y2);
+	return line;
+    }//basicTranslate
+
+    //returns a DataLine that has been scaled by Tx and Ty
+    public DataLine basicScale(double Sx, double Sy, DataLine line) {
+	double x1 = Math.round(line.getx1() * Sx);
+	double y1 = Math.round(line.gety1() * Sy);
+	double x2 = Math.round(line.getx2() * Sx);
+	double y2 = Math.round(line.gety2() * Sy);
+	DataLine result = new DataLine((int)x1,(int)y1,(int)x2,(int)y2);
+	return result;
+    }//basicScale
+
+
+    //returns a Dataline that has been rotated by angle
+    public DataLine basicRotate(double angle, DataLine dataline) {
+	angle = Math.toRadians(angle);
+	double cosAngle = Math.cos(angle);
+	double sinAngle = Math.sin(angle);
+	
+	double[][] rotate = { {cosAngle,-sinAngle,1.00}, {sinAngle,cosAngle,0.00}, {0.00,0.00,1.00} };
+	double[][] point1 = {{(double)dataline.getx1(),(double)dataline.gety1(),1.00}};
+	double[][] point2 = {{(double)dataline.getx2(),(double)dataline.gety2(),1.00}};
+
+	double[][] result1 = Matrix.multiplicar(point1,rotate);
+	double[][] result2 = Matrix.multiplicar(point2,rotate);
+	DataLine line = new DataLine((int)result1[0][0], (int)result1[0][1], (int)result2[0][0], (int)result2[0][1]);
+      
+	return line;	
+    }//basicRotate
+    
     //returns a 2d array containing the concatenated matrices
     public void concatenate(double[][] matrix1, double[][] matrix2) {
 	double[][] result = Matrix.multiplicar(matrix1,matrix2);
