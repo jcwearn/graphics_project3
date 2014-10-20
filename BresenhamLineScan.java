@@ -16,32 +16,23 @@ public class BresenhamLineScan extends JPanel {
 
     private BufferedImage canvas;
     private ArrayList<DataLine> datalines = new ArrayList<DataLine>();
+    private int numOfDatalines;
 
     public BresenhamLineScan(int width, int height) {
 	int x1,x2,y1,y2;
 
 	canvas = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         fillCanvas(Color.BLACK);
-	DataLine line1 = new DataLine(10,10,10,100);
-	DataLine line2 = new DataLine(10,10,100,10);
-	DataLine line3 = new DataLine(10,10,100,100);
-	DataLine line4 = new DataLine(100,100,150,50);
-	DataLine line5 = line4.basicTranslate(50,50);
-	DataLine line6 = line5.basicScale(2,1.5);
-	DataLine line7 = line6.basicRotate(30);
-	//drawLine(line1);
-	//horizontal
-	//drawLine(line2);
-	//diagonal pos
-	//drawLine(line3);
-	//diagonal neg
-	drawLine(line4);
-	drawLine(line5);
-	drawLine(line6);
-	drawLine(line7);
-
-	DataLine.outputLines(datalines, 4);
+	numOfDatalines = 0;
     }
+
+    public ArrayList<DataLine> getDatalines() {
+	return datalines;
+    }
+
+    public int getNumOfDatalines() {
+	return numOfDatalines;
+    }//getNumOfDatalines
 
     public void setDimension(int width, int height) {
 	
@@ -111,6 +102,7 @@ public class BresenhamLineScan extends JPanel {
 	
         repaint();
 	datalines.add(dataline);
+	numOfDatalines++;
 	
     }
 }
