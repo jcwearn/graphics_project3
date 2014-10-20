@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class DataLine {
     private int x1,x2,y1,y2;
+    private double[][] concatenateMatrix;
     
     public DataLine(int x1, int y1, int x2, int y2) {
 	this.x1 = x1;
@@ -84,11 +85,14 @@ public class DataLine {
 	return line;	
     }//basicRotate
 
+
+    /*
     //returns a 2d array containing the concatenated matrices
-    public double[][] concatenate(double[][] matrix1, double[][] matrix2) {
+    public void concatenate(double[][] matrix1, double[][] matrix2) {
 	double[][] result = Matrix.multiplicar(matrix1,matrix2);
-	return result;
+	concatenateMatrix = result;
     }//concatenate
+    */
 
     public DataLine[] applyTransformation(double[][] matrix, DataLine[] datalines, int num) {
 	DataLine[] transformedLines = new DataLine[num];
