@@ -219,7 +219,7 @@ public class Driver {
 	     case 8:
 		 break;
 	     case 9:
-		 DataLine.outputLines(panel.getDatalines(), panel.getNumOfDatalines());
+		 panel.outputLines(panel.getDatalines(), panel.getNumOfDatalines());
 		 break;
 	     case 10:
 		 isRunning = false;
