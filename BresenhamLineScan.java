@@ -17,6 +17,7 @@ public class BresenhamLineScan extends JPanel {
     private BufferedImage canvas;
     private ArrayList<DataLine> datalines = new ArrayList<DataLine>();
     private int numOfDatalines;
+    private double[][] concatenateMatrix;
 
     public BresenhamLineScan(int width, int height) {
 	int x1,x2,y1,y2;
@@ -25,6 +26,12 @@ public class BresenhamLineScan extends JPanel {
         fillCanvas(Color.BLACK);
 	numOfDatalines = 0;
     }
+
+    //returns a 2d array containing the concatenated matrices
+    public void concatenate(double[][] matrix1, double[][] matrix2) {
+	double[][] result = Matrix.multiplicar(matrix1,matrix2);
+	concatenateMatrix = result;
+    }//concatenate
 
     public ArrayList<DataLine> getDatalines() {
 	return datalines;
