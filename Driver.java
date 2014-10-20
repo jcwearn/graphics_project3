@@ -1,6 +1,7 @@
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Driver {
      public static void main(String[] args) {
@@ -10,6 +11,7 @@ public class Driver {
          int width = 640;
          int height = 480;
 	 int input;
+	 String inputString;
 	 int x1,y1,x2,y2, Tx, Ty, Sx, Sy, angle;
 	 double matrixInput;
 	 double[][] matrix1,matrix2;
@@ -189,6 +191,27 @@ public class Driver {
 		 System.out.println("Result stored! It can now be used with other transformations.\n\n");
 		 break;
 	     case 5:
+		 ArrayList<DataLine> datalines = panel.getDatalines();
+		 double[][] matrix = new double[3][3];
+		 int num = panel.getNumOfDatalines();
+		 
+		 System.out.println("Would you like to use the stored matrix? (y/n)");
+		 inputString = scan.nextLine();
+
+		 if(inputString.equalsIgnoreCase("y")) {
+		     matrix = panel.getConcatenateMatrix();
+		     panel.applyTransformation(matrix, datalines, num);
+		 }
+		 else if(inputString.equalsIgnoreCase("n")) {
+		     for(int i = 0; i < 3; i++) {
+			 for(int j = 0; j < 3; j++) {
+			     System.out.println("Enter number " + (i*j+1));
+			     matrixInput = scan.nextDouble();
+			     matrix[i][j] = matrixInput;
+			 }
+		     }
+		     panel.applyTransformation(matrix, datalines, num);
+		 }
 		 break;
 	     case 6:
 		 break;

@@ -21,7 +21,8 @@ public class BresenhamLineScan extends JPanel {
 
     public BresenhamLineScan(int width, int height) {
 	int x1,x2,y1,y2;
-
+	double[][] matrix = { {0.0,0.0,0.0}, {0.0,0.0,0.0}, {0.0,0.0,0.0} };
+	concatenateMatrix = matrix;
 	canvas = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         fillCanvas(Color.BLACK);
 	numOfDatalines = 0;
@@ -47,7 +48,7 @@ public class BresenhamLineScan extends JPanel {
 	return result;
     }//basicScale
 
-
+    
     //returns a Dataline that has been rotated by angle
     public DataLine basicRotate(double angle, DataLine dataline) {
 	angle = Math.toRadians(angle);
@@ -71,6 +72,31 @@ public class BresenhamLineScan extends JPanel {
 	concatenateMatrix = result;
     }//concatenate
 
+    public DataLine[] applyTransformation(double[][] matrix, ArrayList<DataLine> datalines, int num) {
+	DataLine[] transformedLines = new DataLine[num];
+	
+	for(int i = 0; i < num; i++) {
+	    int x1 = datalines.get(i).getx1();
+	    int y1 = datalines.get(i).gety1();
+	    int x2 = datalines.get(i).getx2();
+	    int y2 = datalines.get(i).gety2();
+	    
+	    double[][] point1 = { {(double)x1,(double)y1,1.00} };
+	    double[][] point2 = { {(double)x2,(double)y2,1.00} };
+	    double[][] result1 = Matrix.multiplicar(point1,matrix);
+	    double[][] result2 = Matrix.multiplicar(point2,matrix);
+	    DataLine line = new DataLine((int)result1[0][0], (int)result1[0][1], (int)result2[0][0], (int)result2[0][1]);
+	    transformedLines[i] = line;
+	    drawLine(line);
+	}
+	
+	return transformedLines;
+    }//applyTransformation
+
+    public double[][] getConcatenateMatrix() {
+	return concatenateMatrix;
+    }
+    
     public ArrayList<DataLine> getDatalines() {
 	return datalines;
     }

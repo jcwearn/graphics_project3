@@ -46,26 +46,6 @@ public class DataLine {
 	y2 = y;
     }//sety1
 
-    public DataLine[] applyTransformation(double[][] matrix, DataLine[] datalines, int num) {
-	DataLine[] transformedLines = new DataLine[num];
-
-	for(int i = 0; i < num; i++) {
-	    int x1 = datalines[i].getx1();
-	    int y1 = datalines[i].gety1();
-	    int x2 = datalines[i].getx2();
-	    int y2 = datalines[i].gety2();
-	    
-	    double[][] point1 = { {(double)x1,(double)y1,1.00} };
-	    double[][] point2 = { {(double)x2,(double)y2,1.00} };
-	    double[][] result1 = Matrix.multiplicar(point1,matrix);
-	    double[][] result2 = Matrix.multiplicar(point2,matrix);
-	    DataLine line = new DataLine((int)result1[0][0], (int)result1[0][1], (int)result2[0][0], (int)result2[0][1]);
-	    transformedLines[i] = line;
-	}
-
-	return transformedLines;
-    }//applyTransformation
-
     public void viewportSpec(int Vx0, int Vy0, int Vx1, int Vy1) {
 
     }//viewportSpec
