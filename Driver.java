@@ -1,5 +1,6 @@
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import java.awt.FlowLayout;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -11,7 +12,7 @@ public class Driver {
          int width = 640;
          int height = 480;
 	 int input;
-	 int x1,y1,x2,y2, Tx, Ty, angle;
+	 int x1,y1,x2,y2, Tx, Ty, angle, Vx0, Vy0, Vx1, Vy1;
 	 double matrixInput, Sx, Sy;
 	 double[][] matrix1,matrix2;
 	 JFrame frame = new JFrame("Project 3");
@@ -33,10 +34,9 @@ public class Driver {
 	     System.out.println("4: Concatenate");
 	     System.out.println("5: Apply Transformation");
 	     System.out.println("6: Viewport-spec");
-	     System.out.println("7: Display Pixels");
-	     System.out.println("8: Input Lines");
-	     System.out.println("9: Output Lines");
-	     System.out.println("10: Exit");
+	     System.out.println("7: Input Lines");
+	     System.out.println("8: Output Lines");
+	     System.out.println("9: Exit");
 	     
 	     input = scan.nextInt();
 	     switch(input) {
@@ -213,16 +213,39 @@ public class Driver {
 		 }
 		 break;
 	     case 6:
-		 break;
+		 int screenWidth = BresenhamLineScan.getScreenWorkingWidth();
+		 int screenHeight = BresenhamLineScan.getScreenWorkingHeight();
+		 System.out.println("Enter Vx0:");
+		 Vx0 = scan.nextInt();
+		 System.out.println("Enter Vy0:");
+		 Vy0 = scan.nextInt();
+		 System.out.println("Enter Vx1:");
+		 Vx1 = scan.nextInt();
+		 System.out.println("Enter Vy1:");
+		 Vy1 = scan.nextInt();
+
+		 int frameWidth = Vx1-Vx0;
+		 int frameHeight = Vy1-Vy0;
+
+		 BresenhamLineScan newpanel = new BresenhamLineScan(frameWidth,frameHeight);
+		 newpanel.displayPixels(panel.getDatalines(), panel.getNumOfDatalines());
+		 frame.remove(panel);
+		 frame.add(newpanel);
+		 frame.pack();
+		 frame.setLocation(Vx0,screenHeight-frameHeight-Vy0);
+		 System.out.println(screenHeight-frameHeight-Vy0);
+		 frame.pack();
+		 
+		 //frame.pack();
+		 
+		 break;	
 	     case 7:
-		 break;
-	     case 8:
 		 panel.inputLines();
 		 break;
-	     case 9:
+	     case 8:
 		 panel.outputLines(panel.getDatalines(), panel.getNumOfDatalines());
 		 break;
-	     case 10:
+	     case 9:
 		 isRunning = false;
 		 break;
 	     default:

@@ -98,11 +98,13 @@ public class BresenhamLineScan extends JPanel {
     }//applyTransformation
 
      public void viewportSpec(int Vx0, int Vy0, int Vx1, int Vy1) {
-
+	 
     }//viewportSpec
 
-    public void displayPixels(DataLine[] datalines, int num) {
-
+    public void displayPixels(ArrayList<DataLine> datalines, int num) {
+	for(int i = 0; i < num; i++) {
+	    drawLine(datalines.get(i));
+	}
     }//displayPixels
 
     public void inputLines() {
@@ -163,6 +165,14 @@ public class BresenhamLineScan extends JPanel {
 			
     }//outputLines
 
+    public static int getScreenWorkingWidth() {
+	return java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width;
+    }
+
+    public static int getScreenWorkingHeight() {
+	return java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().height;
+    }
+
     public double[][] getConcatenateMatrix() {
 	return concatenateMatrix;
     }
@@ -175,14 +185,9 @@ public class BresenhamLineScan extends JPanel {
 	return numOfDatalines;
     }//getNumOfDatalines
 
-    public void setDimension(int width, int height) {
-	
-    }
-
     public Dimension getPreferredSize() {
         return new Dimension(canvas.getWidth(), canvas.getHeight());
     }
-
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
