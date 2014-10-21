@@ -12,6 +12,7 @@ public class Driver {
          int width = 640;
          int height = 480;
 	 int input;
+	 int counter = 0;
 	 int x1,y1,x2,y2, Tx, Ty, angle, Vx0, Vy0, Vx1, Vy1;
 	 double matrixInput, Sx, Sy;
 	 double[][] matrix1,matrix2;
@@ -130,7 +131,8 @@ public class Driver {
 		 if(is3x3) {
 		     for(int i = 0; i < 3; i++) {
 			 for(int j = 0; j < 3; j++) {
-			     System.out.println("Enter number " + (i*j+1));
+			     
+			     System.out.println("Enter number " + ++counter);
 			     matrixInput = scan.nextDouble();
 			     matrix1[i][j] = matrixInput;
 			 }
@@ -162,11 +164,11 @@ public class Driver {
 		     matrix2 = new double[0][0];
 		     System.out.println("Invalid Input");
 		 }
-
+		 counter = 0;
 		 if(is3x3) {
 		     for(int i = 0; i < 3; i++) {
 			 for(int j = 0; j < 3; j++) {
-			     System.out.println("Enter number " + (i*j+1));
+			     System.out.println("Enter number " + ++counter);
 			     matrixInput = scan.nextDouble();
 			     matrix2[i][j] = matrixInput;
 			 }
@@ -193,7 +195,7 @@ public class Driver {
 		 
 		 System.out.println("Select option.\n1: Use stored matrix.\n2: Enter new 3x3 matrix.");
 		 input = scan.nextInt();
-
+		 counter = 0;
 		 if(input == 1) {
 		     matrix = panel.getConcatenateMatrix();
 		     panel.applyTransformation(matrix, datalines, num);
@@ -201,7 +203,7 @@ public class Driver {
 		 else if(input == 2) {
 		     for(int i = 0; i < 3; i++) {
 			 for(int j = 0; j < 3; j++) {
-			     System.out.println("Enter number " + (i*j+1));
+			     System.out.println("Enter number " + ++counter);
 			     matrixInput = scan.nextDouble();
 			     matrix[i][j] = matrixInput;
 			 }
